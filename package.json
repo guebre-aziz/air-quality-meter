@@ -1,0 +1,27 @@
+{
+  "name": "air-quality-meter",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "build": "webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "os-browserify": "^0.3.0",
+    "style-loader": "^3.2.1",
+    "webpack": "^5.51.1"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "css-loader": "^6.2.0",
+    "dotenv-webpack": "^7.0.3",
+    "html": "^1.0.0",
+    "html-loader": "^2.1.2",
+    "html-webpack-plugin": "^5.3.2",
+    "webpack-dev-server": "^4.0.0",
+    "webpack-plugin": "^1.0.5"
+  }
+}
