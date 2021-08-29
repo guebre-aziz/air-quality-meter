@@ -6,11 +6,114 @@
   <title>Air Quality Meter</title>
   <meta name="description" content="Air quality and pollution measurment">
   <meta name="author" content="Guebre Aziz">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+  <!-- MDB -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css" rel="stylesheet" />
+
+  <!-- Leaflet css -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+  <!-- // Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+
 
 <body>
-  <input type="text" id="cityInput" value="milano"></input><br><br>
-  <button id="getPosButton">Get My Pos</button>
-  <h2 id="textCity"></h2>
+  <header>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg  navbar-light fixed-top shadow-1-strong" style="background-color:#f2f2f2;">
+    <div class="container-fluid">
+
+      <!-- Navbar brand -->
+      <a class="navbar-brand mt-2 mt-lg-0" href="#">
+        <img src="79db6a1b51d973a88e6f.svg" height="15" alt="" loading="lazy" />
+        <small></small>
+      </a>
+      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarExample01">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" aria-current="page" href="#">Cerca</a>
+          </li>
+          <!-- <li class="nav-item">
+              <a class="nav-link" href="#">La mia zona</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Mappa</a>
+            </li> -->
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+        </ul>
+      </div>
+      <div class="d-flex input-group w-auto">
+        <button id="getPosButton" type="button" class="btn btn-outline-primary me-4">
+          Rileva posizione
+        </button>
+        <input type="search" class="form-control rounded" placeholder="Cerca Città" aria-label="Search" aria-describedby="search-addon" id="cityInput" />
+        <span class="input-group-text border-0" id="search-addon">
+          <i class="fas fa-search"></i>
+        </span>
+
+      </div>
+    </div>
+  </nav>
+  <!-- Navbar -->
+
+  <!-- Background image -->
+  <div class=" text-center bg-image" style="
+        height: 300px;
+        margin-top: 58px;
+      ">
+    <img src="0204274112702d8f83d9.jpg" alt="" class="img-fluid">
+    <div class="mask" style="background-color: rgba(0, 0, 0, 0.1);">
+      <div class="d-flex justify-content-center align-items-center h-100">
+        <div class="text-white">
+          <h1 class="mb-3">Esplora gli indici di qualità dell'aria</h1>
+          <h4 class="mb-3">Ovunque nel mondo!</h4>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Background image -->
+
+</header>
+<div id="info-container" class="container-xxl px-4">
+  <div class="row g-4 ">
+    <div class="col-sm-7">
+      <div class="card shadow-1-strong">
+        <div class="card-header" id="cityTimeId">Time</div>
+        <div class="card-body">
+          <h4 class="card-title" id="cityNameId">Card title</h4>
+          <div class="card justify-content-center align-items-center text-white shadow-1-strong" id="aqiDivId">
+            <p>Indice AQI</p>
+            <h1 id="aqiId">AQI</h1>
+            <div class="card-footer" id="aqiDescriptionId"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-5">
+      <div class="card shadow-1-strong">
+        <button id="getPosButton2" type="button" class="btn btn-primary">
+          Rileva posizione
+        </button>
+        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+          <div id="tileMapId" class=""></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- MDB -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>
+
 </body>
 
 </html>
