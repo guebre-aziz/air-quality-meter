@@ -1,0 +1,51 @@
+* {
+  box-sizing: border-box;
+}
+
+.hello {
+  color: purple;
+}
+
+ /* Leaflet */
+ #tileMapId {
+   height: 225px;
+
+  }
+
+
+#aqiDivId {
+  background-color: grey;
+  height: 150px;
+  width: 150px;
+  border-radius: 10px;
+}
+#getPosButton2 {
+
+
+}
+
+#info-container {
+  position: relative;
+  top: -60px;
+}
+
+#exploreMap {
+  height: 450px;
+ }
+
+/* #exploreTileId {
+  background-color: grey;
+  height: 40px;
+  width: 40px;
+} */
+.leaflet-popup-content-wrapper .leaflet-popup-content {
+  margin: 4px;
+  z-index: -1000;
+}
+
+#exploreAqiId {
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  pointer-events: none;
+}
