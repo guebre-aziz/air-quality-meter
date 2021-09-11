@@ -1,13 +1,13 @@
 {
   "name": "air-quality-meter",
   "version": "1.0.0",
-  "description": "",
+  "description": "Realtime Air Quality Index (AQI) mesurment web app.",
   "private": true,
   "scripts": {
     "build": "webpack"
   },
   "keywords": [],
-  "author": "",
+  "author": "Guebre Aziz",
   "license": "ISC",
   "dependencies": {
     "firebase": "^9.0.2",
