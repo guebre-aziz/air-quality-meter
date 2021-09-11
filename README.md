@@ -45,6 +45,3 @@
 * 0.1
     * Initial Release.
 
-## License
-
-MIT license
