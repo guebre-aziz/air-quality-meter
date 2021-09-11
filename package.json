@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "firebase": "^9.0.2",
     "os-browserify": "^0.3.0",
     "style-loader": "^3.2.1",
     "webpack": "^5.51.1"

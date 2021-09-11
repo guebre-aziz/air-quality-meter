@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html><head><script defer src="index.bundle.js"></script></head>
+<html lang="it"><head><script defer src="index.bundle.js"></script></head>
 
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Air Quality Meter</title>
-  <meta name="description" content="Air quality and pollution measurment">
+  <link rel="icon" href="8df648c53bb1cd5ab508.png" type="image">
+  <meta name="description" content="Indice qualità dell'aria in tempo reale ovunque nel mondo.">
   <meta name="author" content="Guebre Aziz">
   <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
@@ -17,48 +19,52 @@
   <!-- // Leaflet JS -->
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
 
-
 <body>
   <header>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg  navbar-light fixed-top shadow-1-strong" style="background-color:#f2f2f2;">
+    <nav class="navbar navbar-expand-sm  navbar-light fixed-top shadow-1-strong" style="background-color:#f2f2f2;">
+      <!-- Container wrapper -->
       <div class="container-fluid">
-
-        <!-- Navbar brand -->
-        <a class="navbar-brand mt-2 mt-lg-0" href="#">
-          <img src="79db6a1b51d973a88e6f.svg" height="15" alt="" loading="lazy" />
-          <small></small>
-        </a>
-        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+        <!-- Toggle button -->
+        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <i class="fas fa-bars"></i>
         </button>
-        <div class="collapse navbar-collapse" id="navbarExample01">
+
+        <!-- Collapsible wrapper -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <!-- Navbar brand -->
+          <a class="navbar-brand mt-2 mt-lg-0" href="#">
+            <img src="17de9e5c4569bb02a8a3.svg" height="15" alt="" loading="lazy" />
+          </a>
+          <!-- Left links -->
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item active">
-              <a class="nav-link" aria-current="page" href="#">Cerca</a>
-            </li>
-            <!-- <li class="nav-item">
-              <a class="nav-link" href="#">La mia zona</a>
+            <li class="nav-item">
+              <a class="nav-link" href="#cityInput">Cerca</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Mappa</a>
-            </li> -->
+              <a class="nav-link" href="#exploreMap">Esplora</a>
+            </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
+              <a class="nav-link" href="#about">About</a>
             </li>
           </ul>
+          <!-- Left links -->
         </div>
-        <div class="d-flex input-group w-auto">
-          <button id="getPosButton" type="button" class="btn btn-outline-primary me-4">
-            Rileva posizione
-          </button>
+        <!-- Collapsible wrapper -->
+
+        <!-- Right elements -->
+        <button id="getPosButton" type="button" class="btn btn-outline-primary me-3">
+          Rileva posizione
+        </button>
+        <div class="d-flex input-groups w-auto">
           <input type="search" class="form-control rounded" placeholder="Cerca Città" aria-label="Search" aria-describedby="search-addon" id="cityInput" />
           <span class="input-group-text border-0" id="search-addon">
             <i class="fas fa-search"></i>
           </span>
-
         </div>
+        <!-- Right elements -->
       </div>
+      <!-- Container wrapper -->
     </nav>
     <!-- Navbar -->
 
@@ -82,11 +88,11 @@
   </header>
   <div id="info-container" class="container-xxl px-4">
     <div class="row g-4 ">
-      <div class="col-sm-7">
+      <div class="col-sm-6">
         <div class="card shadow-1-strong">
           <div class="card-header" id="cityTimeId">Time</div>
           <div class="card-body">
-            <h4 class="card-title" id="cityNameId">Card title</h4>
+            <h4 class="card-title" id="cityNameId">Nome stazione</h4>
             <div class="card justify-content-center align-items-center text-white shadow-1-strong" id="aqiDivId">
               <p>Indice AQI</p>
               <h1 id="aqiId">AQI</h1>
@@ -95,10 +101,10 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-5">
+      <div class="col-sm-6">
         <div class="card shadow-1-strong">
           <button id="getPosButton2" type="button" class="btn btn-primary">
-            Rileva posizione
+            Rileva posizione qui o clicca nella mappa
           </button>
           <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
             <div id="tileMapId" class=""></div>
@@ -108,88 +114,57 @@
     </div>
   </div>
 
+
+
   <section>
-    <div class="col-12">
-      <div class="card shadow-1-strong">
-        <h2 class="text-center p-4">Esplora</h2>
-        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+    <div class="text-center col-12 p-4 shadow-4" <a class="btn btn-primary" data-mdb-toggle="collapse" href="#collapseGuida" role="button" aria-expanded="false" aria-controls="collapseExample">
+      GUIDA
+      </a>
+
+      <!-- Collapsed content -->
+      <div class="collapse mt-3" id="collapseGuida">
+        L'indice di qualità dell'aria (AQI) dà un'idea se è sicuro respirare l'aria. Formulato dalla US Environmental Protection Agency (EPA) negli anni '70, è diventato il modo più facile con cui le città e i paesi di tutto il mondo valutano
+        l'effetto dell'inquinamento atmosferico sulla salute dei propri cittadini.
+        AQI semplifica la misurazione della qualità dell'aria posizionandola su una scala da 0 a 500 (piu basso è l'indice, migliore è la qualità dell'aria). L'EPA è riuscito a trasformare complesse formule scientifiche in qualcosa che quasi tutti
+        possono capire.
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="col-12 p-4">
+      <div class="card shadow-4">
+        <h2 class="text-center p-3">Esplora</h2>
+        <p class="text-center">Muoviti nella mappa per visualizzare gli indici</p>
+        <div class="bg-image hover-overlay ripple p-4" data-mdb-ripple-color="light">
           <div id="exploreMap" class=""></div>
         </div>
       </div>
     </div>
   </section>
 
-  <footer class="bg-light text-center text-white">
+  <footer id="about" class="text-center text-white p-4" style="background-color: #f1f1f1;">
     <!-- Grid container -->
-    <div class="container p-4 pb-0">
+    <div class="container pt-4">
       <!-- Section: Social media -->
       <section class="mb-4">
-        <!-- Facebook -->
-        <a
-          class="btn btn-primary btn-floating m-1"
-          style="background-color: #3b5998;"
-          href="#!"
-          role="button"
-          ><i class="fab fa-facebook-f"></i
-        ></a>
-
-        <!-- Twitter -->
-        <a
-          class="btn btn-primary btn-floating m-1"
-          style="background-color: #55acee;"
-          href="#!"
-          role="button"
-          ><i class="fab fa-twitter"></i
-        ></a>
-
-        <!-- Google -->
-        <a
-          class="btn btn-primary btn-floating m-1"
-          style="background-color: #dd4b39;"
-          href="#!"
-          role="button"
-          ><i class="fab fa-google"></i
-        ></a>
-
-        <!-- Instagram -->
-        <a
-          class="btn btn-primary btn-floating m-1"
-          style="background-color: #ac2bac;"
-          href="#!"
-          role="button"
-          ><i class="fab fa-instagram"></i
-        ></a>
-
         <!-- Linkedin -->
-        <a
-          class="btn btn-primary btn-floating m-1"
-          style="background-color: #0082ca;"
-          href="#!"
-          role="button"
-          ><i class="fab fa-linkedin-in"></i
-        ></a>
+        <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="https://www.linkedin.com/in/aziz-guebre-a49a8b177/" role="button" data-mdb-ripple-color="dark"><i class="fab fa-linkedin fa-2x"></i></a>
         <!-- Github -->
-        <a
-          class="btn btn-primary btn-floating m-1"
-          style="background-color: #333333;"
-          href="#!"
-          role="button"
-          ><i class="fab fa-github"></i
-        ></a>
+        <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="https://github.com/guebre-aziz" role="button" data-mdb-ripple-color="dark"><i class="fab fa-github fa-2x"></i></a>
+        <!-- Instagram -->
+        <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="https://www.instagram.com/guebreaziz_/" role="button" data-mdb-ripple-color="dark"><i class="fab fa-instagram fa-2x"></i></a>
       </section>
       <!-- Section: Social media -->
     </div>
     <!-- Grid container -->
 
     <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-      © 2020 Copyright:
-      <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+    <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      Guebre Aziz, developer
     </div>
     <!-- Copyright -->
   </footer>
-
-
 
   <!-- MDB -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>

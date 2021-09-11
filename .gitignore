@@ -1,3 +1,5 @@
 .env
 node_modules/
 aesthetic design/
+firebase.json
+.firebase/
