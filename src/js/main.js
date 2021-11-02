@@ -71,14 +71,20 @@ async function getDataFromLatlng(event) {
       `https://api.waqi.info/feed/geo:${lat};${lng}/?token=${process.env.AQICN_API_KEY}`
     );
     let cityDataTemporary = await response.json();
-    console.log(cityDataTemporary);
     if (cityDataTemporary.status == "error") throw cityDataTemporary;
     cityData = cityDataTemporary;
     updateTileInfo();
     updateTileMap();
-    setTimeout(() => {
-      window.scrollTo(0, 0);
-    }, 1000);
+
+    if (window.innerWidth < 576) {
+      setTimeout(() => {
+        window.scrollTo({
+          top: 190,
+          left: 0,
+          behavior: "smooth",
+        });
+      }, 1000);
+    }
   } catch (err) {
     if (err.status == "error" && err.data == "Over quota") {
       alert(

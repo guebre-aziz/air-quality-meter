@@ -6,6 +6,11 @@
   color: purple;
 }
 
+#bg-image-div {
+  height: 400px;
+  margin-top: 58px;
+}
+
 /* Leaflet */
 #tileMapId {
   height: 265px;
@@ -52,5 +57,11 @@
 
   #getPosButton {
     display: none;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #bg-image-div {
+    height: 250px;
   }
 }
