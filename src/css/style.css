@@ -32,6 +32,11 @@
 
 .leaflet-popup-content-wrapper .leaflet-popup-content {
   margin: 4px;
+  pointer-events: none;
+}
+
+.exploreMapPopup {
+  pointer-events: none;
 }
 
 #exploreAqiId {
